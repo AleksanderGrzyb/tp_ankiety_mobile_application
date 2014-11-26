@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		595508C91A25E6BB00444D17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508C81A25E6BB00444D17 /* main.m */; };
 		595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508CB1A25E6BB00444D17 /* AppDelegate.m */; };
-		595508CF1A25E6BB00444D17 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508CE1A25E6BB00444D17 /* FirstViewController.m */; };
-		595508D21A25E6BB00444D17 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508D11A25E6BB00444D17 /* SecondViewController.m */; };
 		595508D51A25E6BB00444D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595508D31A25E6BB00444D17 /* Main.storyboard */; };
 		595508D71A25E6BB00444D17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 595508D61A25E6BB00444D17 /* Images.xcassets */; };
 		595508DA1A25E6BB00444D17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595508D81A25E6BB00444D17 /* LaunchScreen.xib */; };
 		595508E61A25E6BB00444D17 /* tp_ankietyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508E51A25E6BB00444D17 /* tp_ankietyTests.m */; };
+		595508F11A25F52D00444D17 /* TPAnkietyTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508F01A25F52D00444D17 /* TPAnkietyTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,16 +32,14 @@
 		595508C81A25E6BB00444D17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		595508CA1A25E6BB00444D17 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		595508CB1A25E6BB00444D17 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		595508CD1A25E6BB00444D17 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		595508CE1A25E6BB00444D17 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		595508D01A25E6BB00444D17 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		595508D11A25E6BB00444D17 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		595508D41A25E6BB00444D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		595508D61A25E6BB00444D17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		595508D91A25E6BB00444D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		595508DF1A25E6BB00444D17 /* tp_ankietyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tp_ankietyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595508E41A25E6BB00444D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		595508E51A25E6BB00444D17 /* tp_ankietyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tp_ankietyTests.m; sourceTree = "<group>"; };
+		595508EF1A25F52D00444D17 /* TPAnkietyTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPAnkietyTVC.h; path = Ankiety/TPAnkietyTVC.h; sourceTree = "<group>"; };
+		595508F01A25F52D00444D17 /* TPAnkietyTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPAnkietyTVC.m; path = Ankiety/TPAnkietyTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +81,7 @@
 		595508C51A25E6BB00444D17 /* tp_ankiety */ = {
 			isa = PBXGroup;
 			children = (
-				595508CA1A25E6BB00444D17 /* AppDelegate.h */,
-				595508CB1A25E6BB00444D17 /* AppDelegate.m */,
-				595508CD1A25E6BB00444D17 /* FirstViewController.h */,
-				595508CE1A25E6BB00444D17 /* FirstViewController.m */,
-				595508D01A25E6BB00444D17 /* SecondViewController.h */,
-				595508D11A25E6BB00444D17 /* SecondViewController.m */,
+				595508F21A25F53300444D17 /* Ankiety */,
 				595508D31A25E6BB00444D17 /* Main.storyboard */,
 				595508D61A25E6BB00444D17 /* Images.xcassets */,
 				595508D81A25E6BB00444D17 /* LaunchScreen.xib */,
@@ -101,6 +93,8 @@
 		595508C61A25E6BB00444D17 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				595508CA1A25E6BB00444D17 /* AppDelegate.h */,
+				595508CB1A25E6BB00444D17 /* AppDelegate.m */,
 				595508C71A25E6BB00444D17 /* Info.plist */,
 				595508C81A25E6BB00444D17 /* main.m */,
 			);
@@ -122,6 +116,15 @@
 				595508E41A25E6BB00444D17 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		595508F21A25F53300444D17 /* Ankiety */ = {
+			isa = PBXGroup;
+			children = (
+				595508EF1A25F52D00444D17 /* TPAnkietyTVC.h */,
+				595508F01A25F52D00444D17 /* TPAnkietyTVC.m */,
+			);
+			name = Ankiety;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +176,7 @@
 				TargetAttributes = {
 					595508C21A25E6BB00444D17 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 99UV99PF48;
 					};
 					595508DE1A25E6BB00444D17 = {
 						CreatedOnToolsVersion = 6.1;
@@ -224,9 +228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				595508D21A25E6BB00444D17 /* SecondViewController.m in Sources */,
+				595508F11A25F52D00444D17 /* TPAnkietyTVC.m in Sources */,
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
-				595508CF1A25E6BB00444D17 /* FirstViewController.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

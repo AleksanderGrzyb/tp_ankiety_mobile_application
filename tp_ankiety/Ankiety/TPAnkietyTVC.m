@@ -1,15 +1,13 @@
 //
-//  FirstViewController.h
+//  TPAnkietyTVC.m
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
 //  Copyright (c) 2014 Aleksander Grzyb. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TPAnkietyTVC.h"
 
-@interface FirstViewController : UIViewController
-
+@implementation TPAnkietyTVC
 
 @end
-
