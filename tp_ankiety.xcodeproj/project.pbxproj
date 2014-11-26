@@ -14,6 +14,9 @@
 		595508DA1A25E6BB00444D17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595508D81A25E6BB00444D17 /* LaunchScreen.xib */; };
 		595508E61A25E6BB00444D17 /* tp_ankietyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508E51A25E6BB00444D17 /* tp_ankietyTests.m */; };
 		595508F11A25F52D00444D17 /* TPAnkietyTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508F01A25F52D00444D17 /* TPAnkietyTVC.m */; };
+		595508F51A25F5DA00444D17 /* TPAnkietyTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508F41A25F5DA00444D17 /* TPAnkietyTVCell.m */; };
+		595508FC1A25F8E100444D17 /* TPKontoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FB1A25F8E100444D17 /* TPKontoVC.m */; };
+		595509001A25FFE500444D17 /* TPAnkieta.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FF1A25FFE500444D17 /* TPAnkieta.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		595508E51A25E6BB00444D17 /* tp_ankietyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tp_ankietyTests.m; sourceTree = "<group>"; };
 		595508EF1A25F52D00444D17 /* TPAnkietyTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPAnkietyTVC.h; path = Ankiety/TPAnkietyTVC.h; sourceTree = "<group>"; };
 		595508F01A25F52D00444D17 /* TPAnkietyTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPAnkietyTVC.m; path = Ankiety/TPAnkietyTVC.m; sourceTree = "<group>"; };
+		595508F31A25F5DA00444D17 /* TPAnkietyTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPAnkietyTVCell.h; path = Ankiety/TPAnkietyTVCell.h; sourceTree = "<group>"; };
+		595508F41A25F5DA00444D17 /* TPAnkietyTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPAnkietyTVCell.m; path = Ankiety/TPAnkietyTVCell.m; sourceTree = "<group>"; };
+		595508FA1A25F8E100444D17 /* TPKontoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKontoVC.h; path = Konto/TPKontoVC.h; sourceTree = "<group>"; };
+		595508FB1A25F8E100444D17 /* TPKontoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKontoVC.m; path = Konto/TPKontoVC.m; sourceTree = "<group>"; };
+		595508FE1A25FFE500444D17 /* TPAnkieta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPAnkieta.h; path = Model/TPAnkieta.h; sourceTree = "<group>"; };
+		595508FF1A25FFE500444D17 /* TPAnkieta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPAnkieta.m; path = Model/TPAnkieta.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,8 @@
 		595508C51A25E6BB00444D17 /* tp_ankiety */ = {
 			isa = PBXGroup;
 			children = (
+				595508FD1A25FFCF00444D17 /* Model */,
+				595508F91A25F8B500444D17 /* Konto */,
 				595508F21A25F53300444D17 /* Ankiety */,
 				595508D31A25E6BB00444D17 /* Main.storyboard */,
 				595508D61A25E6BB00444D17 /* Images.xcassets */,
@@ -123,8 +134,28 @@
 			children = (
 				595508EF1A25F52D00444D17 /* TPAnkietyTVC.h */,
 				595508F01A25F52D00444D17 /* TPAnkietyTVC.m */,
+				595508F31A25F5DA00444D17 /* TPAnkietyTVCell.h */,
+				595508F41A25F5DA00444D17 /* TPAnkietyTVCell.m */,
 			);
 			name = Ankiety;
+			sourceTree = "<group>";
+		};
+		595508F91A25F8B500444D17 /* Konto */ = {
+			isa = PBXGroup;
+			children = (
+				595508FA1A25F8E100444D17 /* TPKontoVC.h */,
+				595508FB1A25F8E100444D17 /* TPKontoVC.m */,
+			);
+			name = Konto;
+			sourceTree = "<group>";
+		};
+		595508FD1A25FFCF00444D17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				595508FE1A25FFE500444D17 /* TPAnkieta.h */,
+				595508FF1A25FFE500444D17 /* TPAnkieta.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,9 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595508FC1A25F8E100444D17 /* TPKontoVC.m in Sources */,
 				595508F11A25F52D00444D17 /* TPAnkietyTVC.m in Sources */,
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
+				595509001A25FFE500444D17 /* TPAnkieta.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
+				595508F51A25F5DA00444D17 /* TPAnkietyTVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
