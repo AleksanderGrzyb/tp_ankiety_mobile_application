@@ -1,13 +1,13 @@
 //
-//  TPAnkieta.m
+//  AccountVC.m
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
 //  Copyright (c) 2014 Aleksander Grzyb. All rights reserved.
 //
 
-#import "TPAnkieta.h"
+#import "AccountVC.h"
 
-@implementation TPAnkieta
+@implementation AccountVC
 
 @end

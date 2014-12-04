@@ -1,13 +1,13 @@
 //
-//  TPAnkietyTVC.h
+//  Questionnaire.m
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
 //  Copyright (c) 2014 Aleksander Grzyb. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Questionnaire.h"
 
-@interface TPAnkietyTVC : UITableViewController
+@implementation Questionnaire
 
 @end

@@ -1,5 +1,5 @@
 //
-//  TPAnkieta.h
+//  Questionnaire.h
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TPAnkieta : NSObject
+@interface Questionnaire : NSObject
 
 @property (strong, nonatomic) NSString *title; // eg. Transport Publiczny
 @property (nonatomic) NSInteger timeToComplete; // eg. 10 (in minutes)

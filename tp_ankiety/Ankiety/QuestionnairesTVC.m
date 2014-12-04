@@ -1,19 +1,19 @@
 //
-//  TPAnkietyTVC.m
+//  QuestionnairesTVC.m
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
 //  Copyright (c) 2014 Aleksander Grzyb. All rights reserved.
 //
 
-#import "TPAnkietyTVC.h"
-#import "TPAnkietyTVCell.h"
+#import "QuestionnairesTVC.h"
+#import "QuestionnairesTVCell.h"
 
-@interface TPAnkietyTVC () <UITableViewDataSource, UITableViewDelegate>
+@interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation TPAnkietyTVC
+@implementation QuestionnairesTVC
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -32,8 +32,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TPAnkietyTVCell *ankietyCell = [tableView dequeueReusableCellWithIdentifier:@"ankietycell"];
-    return ankietyCell;
+    QuestionnairesTVCell *questionnairesCell = [tableView dequeueReusableCellWithIdentifier:@"questionnairescell"];
+    return questionnairesCell;
 }
 
 @end

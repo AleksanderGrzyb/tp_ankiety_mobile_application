@@ -1,5 +1,5 @@
 //
-//  TPKontoVC.h
+//  QuestionnairesTVCell.h
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 26/11/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TPKontoVC : UIViewController
+@interface QuestionnairesTVCell : UITableViewCell
 
 @end
