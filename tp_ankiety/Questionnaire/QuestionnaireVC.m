@@ -7,6 +7,8 @@
 //
 
 #import "QuestionnaireVC.h"
+#import "YNQuestionVC.h"
+#import "Question.h"
 
 @interface QuestionnaireVC () <ViewPagerDataSource, ViewPagerDelegate>
 
@@ -31,18 +33,25 @@
 
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager
 {
-    return 4;
+    return [self.questionnaire.questions count];
 }
 
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index
 {
     UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"Tab #%lu", (unsigned long)index];
+    label.text = [NSString stringWithFormat:@"Pytanie %lu", (unsigned long)index];
     [label sizeToFit];
     
     return label;
 }
 
+- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index
+{
+    YNQuestionVC *questionVC = [[YNQuestionVC alloc] init];
+    Question *question = [self.questionnaire.questions objectAtIndex:index];
+    questionVC.bodyText = question.bodyText;
+    return questionVC;
+}
 
 
 @end

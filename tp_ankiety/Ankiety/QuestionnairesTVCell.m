@@ -21,21 +21,25 @@
 - (void)setPoints:(NSUInteger)points
 {
     self.pointsLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)points];
+    _points = points;
 }
 
 - (void)setTitle:(NSString *)title
 {
     self.titleLabel.text = title;
+    _title = title;
 }
 
 - (void)setAuthor:(NSString *)author
 {
     self.authorLabel.text = [NSString stringWithFormat:@"Opublikowany przez: %@", author];
+    _author = author;
 }
 
 - (void)setTimeToComplete:(NSUInteger)timeToComplete
 {
     self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %lu min", (unsigned long)timeToComplete];
+    _timeToComplete = timeToComplete;
 }
 
 @end

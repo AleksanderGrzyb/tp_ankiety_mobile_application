@@ -7,6 +7,7 @@
 //
 
 #import "QuestionnairesTVC.h"
+#import "QuestionnaireVC.h"
 #import "QuestionnairesTVCell.h"
 #import "Questionnaire.h"
 #import "Question.h"
@@ -65,7 +66,7 @@
     questionnarie2.points = 5;
     NSMutableArray *questionnarie2Questions = [[NSMutableArray alloc] init];
     Question *question11 = [[Question alloc] init];
-    question1.bodyText = @"Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    question11.bodyText = @"Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     question11.type = 0;
     Question *question22 = [[Question alloc] init];
     question22.bodyText = @"Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum.";
@@ -106,6 +107,17 @@
     questionnairesCell.points = questionnaire.points;
     
     return questionnairesCell;
+}
+
+#pragma mark -
+#pragma mark Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"questionnaire"]) {
+        QuestionnaireVC *questionnaireVC = (QuestionnaireVC *)segue.destinationViewController;
+        questionnaireVC.questionnaire = [self.questionnaires objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
 }
 
 @end

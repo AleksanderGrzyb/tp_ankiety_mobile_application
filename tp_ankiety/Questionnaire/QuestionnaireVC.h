@@ -7,9 +7,10 @@
 //
 
 #import "ViewPagerController.h"
+#import "Questionnaire.h"
 
 @interface QuestionnaireVC : ViewPagerController
 
-@property (strong, nonatomic) NSArray *questionnaire;
+@property (strong, nonatomic) Questionnaire *questionnaire;
 
 @end
