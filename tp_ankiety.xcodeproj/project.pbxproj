@@ -19,6 +19,7 @@
 		595508FC1A25F8E100444D17 /* AccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FB1A25F8E100444D17 /* AccountVC.m */; };
 		595509001A25FFE500444D17 /* Questionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FF1A25FFE500444D17 /* Questionnaire.m */; };
 		59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */; };
+		59691DCF1A307B210095FA22 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCE1A307B210095FA22 /* Question.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		595508FF1A25FFE500444D17 /* Questionnaire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Questionnaire.m; path = Model/Questionnaire.m; sourceTree = "<group>"; };
 		59691DC91A30765C0095FA22 /* QuestionnaireVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionnaireVC.h; path = Questionnaire/QuestionnaireVC.h; sourceTree = "<group>"; };
 		59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionnaireVC.m; path = Questionnaire/QuestionnaireVC.m; sourceTree = "<group>"; };
+		59691DCD1A307B210095FA22 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Question/Question.h; sourceTree = "<group>"; };
+		59691DCE1A307B210095FA22 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Question/Question.m; sourceTree = "<group>"; };
 		A85971305A0EDDF94E5399FF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				59691DC81A306BF30095FA22 /* Questionnaire View Controller */,
+				59691DCC1A307B030095FA22 /* Question Model */,
 				595508FD1A25FFCF00444D17 /* Questionnaire Model */,
 				595508F91A25F8B500444D17 /* Account View Controller */,
 				595508F21A25F53300444D17 /* Questionnaires View Controller */,
@@ -193,6 +197,15 @@
 				59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */,
 			);
 			name = "Questionnaire View Controller";
+			sourceTree = "<group>";
+		};
+		59691DCC1A307B030095FA22 /* Question Model */ = {
+			isa = PBXGroup;
+			children = (
+				59691DCD1A307B210095FA22 /* Question.h */,
+				59691DCE1A307B210095FA22 /* Question.m */,
+			);
+			name = "Question Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +349,7 @@
 				595508F11A25F52D00444D17 /* QuestionnairesTVC.m in Sources */,
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
 				595509001A25FFE500444D17 /* Questionnaire.m in Sources */,
+				59691DCF1A307B210095FA22 /* Question.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
 				595508F51A25F5DA00444D17 /* QuestionnairesTVCell.m in Sources */,
 			);

@@ -109,13 +109,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opublikowany przez: MPK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CU0-Fs-ghD">
-                                            <rect key="frame" x="80" y="45" width="203" height="20"/>
+                                            <rect key="frame" x="80" y="45" width="487" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.56961862659999996" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-iz-Joh">
-                                            <rect key="frame" x="20" y="5" width="60" height="60"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-iz-Joh">
+                                            <rect key="frame" x="10" y="5" width="60" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -123,6 +123,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="authorLabel" destination="CU0-Fs-ghD" id="OQa-BL-HdF"/>
+                                    <outlet property="pointsLabel" destination="EzJ-iz-Joh" id="fSX-5i-jn8"/>
+                                    <outlet property="timeToCompleteLabel" destination="52D-8s-bAR" id="2ke-aQ-SNg"/>
+                                    <outlet property="titleLabel" destination="XMm-nF-aIx" id="iA0-uv-sCJ"/>
                                     <segue destination="f1b-Mj-cUS" kind="show" id="pK0-Wl-10R"/>
                                 </connections>
                             </tableViewCell>
