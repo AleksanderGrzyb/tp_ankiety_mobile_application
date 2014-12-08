@@ -11,6 +11,7 @@
 #import "QuestionnairesTVCell.h"
 #import "Questionnaire.h"
 #import "Question.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *questionnaires;
@@ -24,7 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addFakeData];
+    [self testConnection];
+//    [self addFakeData];
 }
 
 #pragma mark -
@@ -45,9 +47,9 @@
 {
     Questionnaire *questionnarie1 = [[Questionnaire alloc] init];
     questionnarie1.title = @"Nibh Ligula";
-    questionnarie1.timeToComplete = 10;
+    questionnarie1.timeToComplete = @(10);
     questionnarie1.author = @"Justo";
-    questionnarie1.points = 24;
+    questionnarie1.points = @(24);
     NSMutableArray *questionnarie1Questions = [[NSMutableArray alloc] init];
     Question *question1 = [[Question alloc] init];
     question1.bodyText = @"Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.";
@@ -61,9 +63,9 @@
     
     Questionnaire *questionnarie2 = [[Questionnaire alloc] init];
     questionnarie2.title = @"Sem Inceptos Fringilla";
-    questionnarie2.timeToComplete = 15;
+    questionnarie2.timeToComplete = @(15);
     questionnarie2.author = @"Lorem Dolor";
-    questionnarie2.points = 5;
+    questionnarie2.points = @(5);
     NSMutableArray *questionnarie2Questions = [[NSMutableArray alloc] init];
     Question *question11 = [[Question alloc] init];
     question11.bodyText = @"Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
@@ -77,6 +79,47 @@
     
     [self.questionnaires addObject:questionnarie1];
     [self.questionnaires addObject:questionnarie2];
+}
+
+- (void)testConnection
+{
+    NSURL *baseURL = [NSURL URLWithString:@"http://192.168.0.16:8000"];
+    NSDictionary *parameters = @{@"format": @"json"};
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager GET:@"/polls/QWERTY/getpoll/" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *questionnaires = [responseObject valueForKey:@"questionnaires"];
+        [self parseDataFromJSON:questionnaires];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Networking Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+}
+
+- (void)parseDataFromJSON:(NSArray *)questionnaires
+{
+    for (NSDictionary *questionnaireDictionary in questionnaires) {
+        Questionnaire *questionnaire = [[Questionnaire alloc] init];
+        questionnaire.title = [questionnaireDictionary valueForKey:@"title"];
+        questionnaire.timeToComplete = (NSNumber *)[questionnaireDictionary valueForKey:@"timeToComplete"];
+        questionnaire.points = (NSNumber *)[questionnaireDictionary valueForKey:@"points"];
+        questionnaire.author = [questionnaireDictionary valueForKey:@"author"];
+        NSArray *questions = [questionnaireDictionary valueForKey:@"questions"];
+        NSMutableArray *questionObjects = [NSMutableArray array];
+        for (NSDictionary *questionDictionary in questions) {
+            Question *question = [[Question alloc] init];
+            question.answers = [questionDictionary valueForKey:@"answers"];
+            question.bodyText = [questionDictionary valueForKey:@"question_text"];
+            [questionObjects addObject:question];
+        }
+        questionnaire.questions = [questionObjects copy];
+        [self.questionnaires addObject:questionnaire];
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark -

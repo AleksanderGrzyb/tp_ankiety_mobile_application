@@ -11,9 +11,9 @@
 @interface Questionnaire : NSObject
 
 @property (strong, nonatomic) NSString *title; // eg. Transport Publiczny
-@property (nonatomic) NSUInteger timeToComplete; // eg. 10 (in minutes)
+@property (nonatomic) NSNumber *timeToComplete; // eg. 10 (in minutes)
 @property (strong, nonatomic) NSString *author; // eg. MPK
 @property (strong, nonatomic) NSArray *questions; // NSArray of NSDictionaries
-@property (nonatomic) NSUInteger points; // Point for filling questionnaire
+@property (nonatomic) NSNumber *points; // Point for filling questionnaire
 
 @end

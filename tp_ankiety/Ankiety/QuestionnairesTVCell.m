@@ -18,9 +18,9 @@
 
 @implementation QuestionnairesTVCell
 
-- (void)setPoints:(NSUInteger)points
+- (void)setPoints:(NSNumber *)points
 {
-    self.pointsLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)points];
+    self.pointsLabel.text = [NSString stringWithFormat:@"%d", [points intValue]];
     _points = points;
 }
 
@@ -36,9 +36,9 @@
     _author = author;
 }
 
-- (void)setTimeToComplete:(NSUInteger)timeToComplete
+- (void)setTimeToComplete:(NSNumber *)timeToComplete
 {
-    self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %lu min", (unsigned long)timeToComplete];
+    self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %d min", [timeToComplete intValue]];
     _timeToComplete = timeToComplete;
 }
 

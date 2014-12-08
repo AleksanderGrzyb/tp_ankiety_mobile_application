@@ -20,8 +20,8 @@
 		595509001A25FFE500444D17 /* Questionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FF1A25FFE500444D17 /* Questionnaire.m */; };
 		59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */; };
 		59691DCF1A307B210095FA22 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCE1A307B210095FA22 /* Question.m */; };
-		59691DD41A3084190095FA22 /* YNQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DD21A3084190095FA22 /* YNQuestionVC.m */; };
-		59691DD51A3084190095FA22 /* YNQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59691DD31A3084190095FA22 /* YNQuestionVC.xib */; };
+		59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DD21A3084190095FA22 /* ABCQuestionVC.m */; };
+		59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59691DD31A3084190095FA22 /* ABCQuestionVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +60,9 @@
 		59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionnaireVC.m; path = Questionnaire/QuestionnaireVC.m; sourceTree = "<group>"; };
 		59691DCD1A307B210095FA22 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Question.h; path = Question/Question.h; sourceTree = "<group>"; };
 		59691DCE1A307B210095FA22 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Question/Question.m; sourceTree = "<group>"; };
-		59691DD11A3084190095FA22 /* YNQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YNQuestionVC.h; path = "Questions View Controllers/YNQuestionVC.h"; sourceTree = "<group>"; };
-		59691DD21A3084190095FA22 /* YNQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YNQuestionVC.m; path = "Questions View Controllers/YNQuestionVC.m"; sourceTree = "<group>"; };
-		59691DD31A3084190095FA22 /* YNQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YNQuestionVC.xib; path = "Questions View Controllers/YNQuestionVC.xib"; sourceTree = "<group>"; };
+		59691DD11A3084190095FA22 /* ABCQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABCQuestionVC.h; path = "Questions View Controllers/ABCQuestionVC.h"; sourceTree = "<group>"; };
+		59691DD21A3084190095FA22 /* ABCQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABCQuestionVC.m; path = "Questions View Controllers/ABCQuestionVC.m"; sourceTree = "<group>"; };
+		59691DD31A3084190095FA22 /* ABCQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ABCQuestionVC.xib; path = "Questions View Controllers/ABCQuestionVC.xib"; sourceTree = "<group>"; };
 		A85971305A0EDDF94E5399FF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,9 +217,9 @@
 		59691DD01A30839E0095FA22 /* Questions View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				59691DD11A3084190095FA22 /* YNQuestionVC.h */,
-				59691DD21A3084190095FA22 /* YNQuestionVC.m */,
-				59691DD31A3084190095FA22 /* YNQuestionVC.xib */,
+				59691DD11A3084190095FA22 /* ABCQuestionVC.h */,
+				59691DD21A3084190095FA22 /* ABCQuestionVC.m */,
+				59691DD31A3084190095FA22 /* ABCQuestionVC.xib */,
 			);
 			name = "Questions View Controllers";
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				595508D51A25E6BB00444D17 /* Main.storyboard in Resources */,
-				59691DD51A3084190095FA22 /* YNQuestionVC.xib in Resources */,
+				59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */,
 				595508DA1A25E6BB00444D17 /* LaunchScreen.xib in Resources */,
 				595508D71A25E6BB00444D17 /* Images.xcassets in Resources */,
 			);
@@ -366,7 +366,7 @@
 				595508F11A25F52D00444D17 /* QuestionnairesTVC.m in Sources */,
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
 				595509001A25FFE500444D17 /* Questionnaire.m in Sources */,
-				59691DD41A3084190095FA22 /* YNQuestionVC.m in Sources */,
+				59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */,
 				59691DCF1A307B210095FA22 /* Question.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
 				595508F51A25F5DA00444D17 /* QuestionnairesTVCell.m in Sources */,

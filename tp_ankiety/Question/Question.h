@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSUInteger type;
 @property (nonatomic, strong) NSString *bodyText;
+@property (nonatomic, strong) NSArray *answers; // Array of answers (NSString)
 
 @end

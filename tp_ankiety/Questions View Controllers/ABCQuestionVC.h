@@ -1,5 +1,5 @@
 //
-//  YNQuestionVC.h
+//  ABCQuestionVC.h
 //  tp_ankiety
 //
 //  Created by Aleksander Grzyb on 04/12/14.
@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Question.h"
 
-@interface YNQuestionVC : UIViewController
+@interface ABCQuestionVC : UIViewController
 
-@property (nonatomic, strong) NSString *bodyText;
+@property (nonatomic, strong) Question *question;
 
 @end

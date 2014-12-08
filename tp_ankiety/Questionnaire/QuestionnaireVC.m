@@ -7,7 +7,7 @@
 //
 
 #import "QuestionnaireVC.h"
-#import "YNQuestionVC.h"
+#import "ABCQuestionVC.h"
 #import "Question.h"
 
 @interface QuestionnaireVC () <ViewPagerDataSource, ViewPagerDelegate>
@@ -16,14 +16,16 @@
 
 @implementation QuestionnaireVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.dataSource = self;
     self.delegate = self;
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -47,9 +49,9 @@
 
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index
 {
-    YNQuestionVC *questionVC = [[YNQuestionVC alloc] init];
+    ABCQuestionVC *questionVC = [[ABCQuestionVC alloc] init];
     Question *question = [self.questionnaire.questions objectAtIndex:index];
-    questionVC.bodyText = question.bodyText;
+    questionVC.question = question;
     return questionVC;
 }
 
