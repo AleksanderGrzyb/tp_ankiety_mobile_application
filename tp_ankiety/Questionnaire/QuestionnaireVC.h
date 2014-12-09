@@ -9,8 +9,15 @@
 #import "ViewPagerController.h"
 #import "Questionnaire.h"
 
+@protocol QuestionnaireVCDelegate <NSObject>
+
+- (void)deleteQuestionnaireFromModel:(Questionnaire *)questionnaire;
+
+@end
+
 @interface QuestionnaireVC : ViewPagerController
 
 @property (strong, nonatomic) Questionnaire *questionnaire;
+@property (weak, nonatomic) id <QuestionnaireVCDelegate> delegateSecond;
 
 @end

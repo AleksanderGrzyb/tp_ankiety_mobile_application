@@ -38,7 +38,6 @@
 {
     NSURL *baseURL = [NSURL URLWithString:@"http://10.42.0.1:8000"];
     NSDictionary *completedQuestionnaire = [self createJSON];
-    NSLog(@"%@", [completedQuestionnaire description]);
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager POST:@"/polls/QWERTY/submitpoll/" parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -51,6 +50,7 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }];
+    [self.delegateSecond deleteQuestionnaireFromModel:self.questionnaire];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

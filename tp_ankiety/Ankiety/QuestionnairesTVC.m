@@ -13,7 +13,7 @@
 #import "Question.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 
-@interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate>
+@interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate, QuestionnaireVCDelegate>
 @property (nonatomic, strong) NSMutableArray *questionnaires;
 @end
 
@@ -25,8 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self testConnection];
     [self createRefreshControl];
+    [self testConnection];
 //    [self addFakeData];
 }
 
@@ -167,12 +167,22 @@
 }
 
 #pragma mark -
+#pragma mark QuestionnaireVC Delegate
+
+- (void)deleteQuestionnaireFromModel:(Questionnaire *)questionnaire
+{
+    [self.questionnaires removeObject:questionnaire];
+    [self.tableView reloadData];
+}
+
+#pragma mark -
 #pragma mark Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"questionnaire"]) {
         QuestionnaireVC *questionnaireVC = (QuestionnaireVC *)segue.destinationViewController;
+        questionnaireVC.delegateSecond = self;
         Questionnaire *questionnaire = [self.questionnaires objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         questionnaireVC.questionnaire = questionnaire;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
