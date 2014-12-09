@@ -9,6 +9,7 @@
 #import "QuestionnaireVC.h"
 #import "ABCQuestionVC.h"
 #import "Question.h"
+#import <AFNetworking.h>
 
 @interface QuestionnaireVC () <ViewPagerDataSource, ViewPagerDelegate>
 
@@ -35,9 +36,37 @@
 
 - (void)sendQuestionnaire
 {
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wysłano!" message:@"Wysłano odpowiedzi z ankiety na serwer!" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-//    [alertView show];
+    NSURL *baseURL = [NSURL URLWithString:@"http://10.42.0.1:8000"];
+    NSDictionary *completedQuestionnaire = [self createJSON];
+    NSLog(@"%@", [completedQuestionnaire description]);
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager POST:@"/polls/QWERTY/submitpoll/" parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Networking Error"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSDictionary *)createJSON
+{
+    NSMutableDictionary *answeredQuestionnaire = [NSMutableDictionary dictionary];
+    NSMutableArray *answeredQuestions = [NSMutableArray array];
+    for (Question *question in self.questionnaire.questions) {
+        NSMutableDictionary *answeredQuestion = [NSMutableDictionary dictionary];
+        [answeredQuestion setValue:question.idNumber forKey:@"id"];
+        [answeredQuestion setValue:question.selectedAnswer forKey:@"answer"];
+        [answeredQuestions addObject:answeredQuestion];
+    }
+    [answeredQuestionnaire setValue:[answeredQuestions copy] forKey:@"questions"];
+    [answeredQuestionnaire setValue:self.questionnaire.idNumber forKey:@"id"];
+    return [answeredQuestionnaire copy];
 }
 
 #pragma mark -

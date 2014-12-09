@@ -127,6 +127,7 @@
             Question *question = [[Question alloc] init];
             question.answers = [questionDictionary valueForKey:@"answers"];
             question.bodyText = [questionDictionary valueForKey:@"question_text"];
+            question.idNumber = [questionDictionary valueForKey:@"id"];
             [questionObjects addObject:question];
         }
         questionnaire.questions = [questionObjects copy];

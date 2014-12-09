@@ -10,7 +10,8 @@
 
 @interface Question : NSObject
 
-@property (nonatomic) NSUInteger type;
+@property (nonatomic, strong) NSNumber *type;
+@property (nonatomic, strong) NSNumber *idNumber;
 @property (nonatomic, strong) NSString *bodyText;
 @property (nonatomic, strong) NSArray *answers; // Array of answers (NSString)
 @property (nonatomic, strong) NSNumber *selectedAnswer; // Index of selected answer, -1 if none selected

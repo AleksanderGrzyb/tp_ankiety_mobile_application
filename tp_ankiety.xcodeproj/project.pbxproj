@@ -181,8 +181,8 @@
 		595508F91A25F8B500444D17 /* Account View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				595508FA1A25F8E100444D17 /* AccountVC.h */,
 				595508FB1A25F8E100444D17 /* AccountVC.m */,
+				595508FA1A25F8E100444D17 /* AccountVC.h */,
 			);
 			name = "Account View Controller";
 			sourceTree = "<group>";
