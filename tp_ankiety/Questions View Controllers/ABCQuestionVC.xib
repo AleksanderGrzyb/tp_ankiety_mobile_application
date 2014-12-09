@@ -25,6 +25,9 @@
                         <segment title="Tak"/>
                         <segment title="Nie"/>
                     </segments>
+                    <connections>
+                        <action selector="segmentSelected:" destination="-1" eventType="valueChanged" id="Odv-DR-PhV"/>
+                    </connections>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd3-99-LUP">
                     <rect key="frame" x="100" y="100" width="400" height="200"/>

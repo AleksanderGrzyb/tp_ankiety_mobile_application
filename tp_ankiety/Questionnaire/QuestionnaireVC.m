@@ -21,13 +21,23 @@
     [super viewDidLoad];
     self.dataSource = self;
     self.delegate = self;
-    // Do any additional setup after loading the view.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Wyślij" style:UIBarButtonItemStylePlain target:self action:@selector(sendPressed)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)sendQuestionnaire
+{
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wysłano!" message:@"Wysłano odpowiedzi z ankiety na serwer!" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+//    [alertView show];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -41,7 +51,7 @@
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index
 {
     UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"Pytanie %lu", (unsigned long)index];
+    label.text = [NSString stringWithFormat:@"Pytanie %lu", (unsigned long)index + 1];
     [label sizeToFit];
     
     return label;
@@ -52,8 +62,29 @@
     ABCQuestionVC *questionVC = [[ABCQuestionVC alloc] init];
     Question *question = [self.questionnaire.questions objectAtIndex:index];
     questionVC.question = question;
+    questionVC.questionnaireID = self.questionnaire.idNumber;
+    questionVC.questionNumber = index;
     return questionVC;
 }
 
+#pragma mark -
+#pragma mark Actions
+
+- (void)sendPressed
+{
+    int numberOfQuestionsAnswered = 0;
+    for (Question *question in self.questionnaire.questions) {
+        if (![question.selectedAnswer isEqual: @(-1)]) {
+            numberOfQuestionsAnswered++;
+        }
+    }
+    if (numberOfQuestionsAnswered == [self.questionnaire.questions count]) {
+        [self sendQuestionnaire];
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Nie ukończono!" message:@"Odpowiedz na wszystkie pytania w ankiecie!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
 
 @end

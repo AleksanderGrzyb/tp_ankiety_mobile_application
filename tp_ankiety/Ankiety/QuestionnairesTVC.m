@@ -26,6 +26,7 @@
 {
     [super viewDidLoad];
     [self testConnection];
+    [self createRefreshControl];
 //    [self addFakeData];
 }
 
@@ -83,31 +84,43 @@
 
 - (void)testConnection
 {
-    NSURL *baseURL = [NSURL URLWithString:@"http://192.168.0.16:8000"];
-    NSDictionary *parameters = @{@"format": @"json"};
+    NSURL *baseURL = [NSURL URLWithString:@"http://10.42.0.1:8000"];
+    NSDictionary *parameters = @{@"format" : @"json"};
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager GET:@"/polls/QWERTY/getpoll/" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *questionnaires = [responseObject valueForKey:@"questionnaires"];
         [self parseDataFromJSON:questionnaires];
+        [self.refreshControl endRefreshing];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Networking Error"
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
+        [self.refreshControl endRefreshing];
         [alertView show];
     }];
 }
 
+- (void)createRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor redColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(testConnection) forControlEvents:UIControlEventValueChanged];
+}
+
 - (void)parseDataFromJSON:(NSArray *)questionnaires
 {
+    [self.questionnaires removeAllObjects];
     for (NSDictionary *questionnaireDictionary in questionnaires) {
         Questionnaire *questionnaire = [[Questionnaire alloc] init];
         questionnaire.title = [questionnaireDictionary valueForKey:@"title"];
         questionnaire.timeToComplete = (NSNumber *)[questionnaireDictionary valueForKey:@"timeToComplete"];
         questionnaire.points = (NSNumber *)[questionnaireDictionary valueForKey:@"points"];
         questionnaire.author = [questionnaireDictionary valueForKey:@"author"];
+        questionnaire.idNumber = [questionnaireDictionary valueForKey:@"id"];
         NSArray *questions = [questionnaireDictionary valueForKey:@"questions"];
         NSMutableArray *questionObjects = [NSMutableArray array];
         for (NSDictionary *questionDictionary in questions) {
@@ -159,7 +172,24 @@
 {
     if ([[segue identifier] isEqualToString:@"questionnaire"]) {
         QuestionnaireVC *questionnaireVC = (QuestionnaireVC *)segue.destinationViewController;
-        questionnaireVC.questionnaire = [self.questionnaires objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        Questionnaire *questionnaire = [self.questionnaires objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        questionnaireVC.questionnaire = questionnaire;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSArray *answersArray = [userDefaults arrayForKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
+        if (!answersArray) {
+            NSMutableArray *newAnswers = [NSMutableArray array];
+            for (int i = 0; i < questionnaire.questions.count; i++) {
+                [newAnswers addObject:[NSNumber numberWithInt:-1]];
+            }
+            [userDefaults setObject:[newAnswers copy] forKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
+        }
+        else {
+            for (int i = 0; i < answersArray.count; i++) {
+                Question *question = questionnaire.questions[i];
+                question.selectedAnswer = answersArray[i];
+            }
+        }
+        [userDefaults synchronize];
     }
 }
 

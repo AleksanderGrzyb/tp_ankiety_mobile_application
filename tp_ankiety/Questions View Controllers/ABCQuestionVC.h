@@ -12,5 +12,7 @@
 @interface ABCQuestionVC : UIViewController
 
 @property (nonatomic, strong) Question *question;
+@property (nonatomic, strong) NSNumber *questionnaireID;
+@property (nonatomic) NSUInteger questionNumber;
 
 @end

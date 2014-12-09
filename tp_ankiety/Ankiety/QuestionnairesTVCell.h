@@ -11,8 +11,8 @@
 @interface QuestionnairesTVCell : UITableViewCell
 
 @property (strong, nonatomic) NSString *title; // eg. Transport Publiczny
-@property (nonatomic) NSNumber *timeToComplete; // eg. 10 (in minutes)
+@property (strong, nonatomic) NSNumber *timeToComplete; // eg. 10 (in minutes)
 @property (strong, nonatomic) NSString *author; // eg. MPK
-@property (nonatomic) NSNumber *points; // Point for filling questionnaire
+@property (strong, nonatomic) NSNumber *points; // Point for filling questionnaire
 
 @end

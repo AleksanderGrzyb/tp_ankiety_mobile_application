@@ -10,4 +10,16 @@
 
 @implementation Question
 
+#pragma mark -
+#pragma mark Initialization
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.selectedAnswer = @(-1);
+    }
+    return self;
+}
+
 @end

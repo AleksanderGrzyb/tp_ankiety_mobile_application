@@ -26,7 +26,12 @@
     for (NSString *answer in self.question.answers) {
         [self.answerSC insertSegmentWithTitle:answer atIndex:[self.question.answers indexOfObject:answer] animated:NO];
     }
-    [self.answerSC setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    if (![self.question.selectedAnswer isEqual:@(-1)]) {
+        [self.answerSC setSelectedSegmentIndex:[self.question.selectedAnswer intValue]];
+    }
+    else {
+        [self.answerSC setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    }
 }
 
 
@@ -41,6 +46,22 @@
         [self.answerSC insertSegmentWithTitle:answer atIndex:[question.answers indexOfObject:answer] animated:NO];
     }
     _question = question;
+}
+
+#pragma mark - 
+#pragma mark Actions
+
+- (IBAction)segmentSelected:(UISegmentedControl *)sender
+{
+    self.question.selectedAnswer = @([sender selectedSegmentIndex]);
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *answersArray = [userDefaults arrayForKey:[NSString stringWithFormat:@"%d", [self.questionnaireID intValue]]];
+    if (answersArray) {
+        NSMutableArray *mutableAnswers = [answersArray mutableCopy];
+        mutableAnswers[self.questionNumber] = @([sender selectedSegmentIndex]);
+        [userDefaults setObject:[mutableAnswers copy] forKey:[NSString stringWithFormat:@"%d", [self.questionnaireID intValue]]];
+    }
+    [userDefaults synchronize];
 }
 
 @end
