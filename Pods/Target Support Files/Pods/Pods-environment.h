@@ -54,6 +54,18 @@
 #define COCOAPODS_VERSION_MINOR_ICViewPager 5
 #define COCOAPODS_VERSION_PATCH_ICViewPager 1
 
+// QULQuestionnaire
+#define COCOAPODS_POD_AVAILABLE_QULQuestionnaire
+#define COCOAPODS_VERSION_MAJOR_QULQuestionnaire 0
+#define COCOAPODS_VERSION_MINOR_QULQuestionnaire 3
+#define COCOAPODS_VERSION_PATCH_QULQuestionnaire 1
+
+// RMStepsController
+#define COCOAPODS_POD_AVAILABLE_RMStepsController
+#define COCOAPODS_VERSION_MAJOR_RMStepsController 1
+#define COCOAPODS_VERSION_MINOR_RMStepsController 0
+#define COCOAPODS_VERSION_PATCH_RMStepsController 2
+
 // SAMStarListView
 #define COCOAPODS_POD_AVAILABLE_SAMStarListView
 #define COCOAPODS_VERSION_MAJOR_SAMStarListView 0

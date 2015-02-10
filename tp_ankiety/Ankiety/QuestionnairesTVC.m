@@ -89,10 +89,10 @@
     NSDictionary *parameters = @{@"format" : @"json"};
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString *getString = [NSString stringWithFormat:@"/polls/%@/getpoll/", [Constans userID]];
+    NSString *getString = [NSString stringWithFormat:@"polls/mobile/%@/register/", [Constans userID]];
     [manager GET:getString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *questionnaires = [responseObject valueForKey:@"questionnaires"];
-        [self parseDataFromJSON:questionnaires];
+        NSDictionary *questionnaireData = (NSDictionary *)responseObject;
+        [self parseDataFromJSON:questionnaireData];
         [self.refreshControl endRefreshing];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Networking Error"
@@ -113,29 +113,27 @@
     [self.refreshControl addTarget:self action:@selector(testConnection) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)parseDataFromJSON:(NSArray *)questionnaires
+- (void)parseDataFromJSON:(NSDictionary *)questionnaireData
 {
     [self.questionnaires removeAllObjects];
-    for (NSDictionary *questionnaireDictionary in questionnaires) {
-        Questionnaire *questionnaire = [[Questionnaire alloc] init];
-        questionnaire.title = [questionnaireDictionary valueForKey:@"title"];
-        questionnaire.timeToComplete = (NSNumber *)[questionnaireDictionary valueForKey:@"timeToComplete"];
-        questionnaire.points = (NSNumber *)[questionnaireDictionary valueForKey:@"points"];
-        questionnaire.author = [questionnaireDictionary valueForKey:@"author"];
-        questionnaire.idNumber = [questionnaireDictionary valueForKey:@"id"];
-        NSArray *questions = [questionnaireDictionary valueForKey:@"questions"];
-        NSMutableArray *questionObjects = [NSMutableArray array];
-        for (NSDictionary *questionDictionary in questions) {
-            Question *question = [[Question alloc] init];
-            question.answers = [questionDictionary valueForKey:@"answers"];
-            question.bodyText = [questionDictionary valueForKey:@"question_text"];
-            question.idNumber = [questionDictionary valueForKey:@"id"];
-            question.type = [questionDictionary valueForKey:@"type"];
-            [questionObjects addObject:question];
-        }
-        questionnaire.questions = [questionObjects copy];
-        [self.questionnaires addObject:questionnaire];
+    Questionnaire *questionnaire = [[Questionnaire alloc] init];
+//    questionnaire.title = [questionnaireDictionary valueForKey:@"title"];
+    questionnaire.points = (NSNumber *)[questionnaireData valueForKey:@"points"];
+    questionnaire.idNumber = [questionnaireData valueForKey:@"poll_id"];
+    questionnaire.timeToComplete = (NSNumber *)[questionnaireData valueForKey:@"time_to_complete"];
+//    questionnaire.author = [questionnaireData valueForKey:@"author"];
+    NSArray *questions = [questionnaireData valueForKey:@"questions"];
+    NSMutableArray *questionObjects = [NSMutableArray array];
+    for (NSDictionary *questionDictionary in questions) {
+        Question *question = [[Question alloc] init];
+        question.answers = [questionDictionary valueForKey:@"available_answers"];
+        question.idNumber = [questionDictionary valueForKey:@"id"];
+        question.type = [questionDictionary valueForKey:@"question_type"];
+        question.bodyText = [questionDictionary valueForKey:@"title"];
+        [questionObjects addObject:question];
     }
+    questionnaire.questions = [questionObjects copy];
+    [self.questionnaires addObject:questionnaire];
     [self.tableView reloadData];
 }
 

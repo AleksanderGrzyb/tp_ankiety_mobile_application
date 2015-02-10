@@ -20,7 +20,6 @@
 		59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */; };
 		59691DCF1A307B210095FA22 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCE1A307B210095FA22 /* Question.m */; };
 		59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DD21A3084190095FA22 /* ABCQuestionVC.m */; };
-		59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59691DD31A3084190095FA22 /* ABCQuestionVC.xib */; };
 		59AEE85C1A76785D007CF17D /* StarQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85A1A76785D007CF17D /* StarQuestionVC.m */; };
 		59AEE85D1A76785D007CF17D /* StarQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */; };
 		59AEE8601A7694BB007CF17D /* constans.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85F1A7694BB007CF17D /* constans.m */; };
@@ -62,7 +61,6 @@
 		59691DCE1A307B210095FA22 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Question/Question.m; sourceTree = "<group>"; };
 		59691DD11A3084190095FA22 /* ABCQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABCQuestionVC.h; path = "Questions View Controllers/ABCQuestionVC.h"; sourceTree = "<group>"; };
 		59691DD21A3084190095FA22 /* ABCQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABCQuestionVC.m; path = "Questions View Controllers/ABCQuestionVC.m"; sourceTree = "<group>"; };
-		59691DD31A3084190095FA22 /* ABCQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ABCQuestionVC.xib; path = "Questions View Controllers/ABCQuestionVC.xib"; sourceTree = "<group>"; };
 		59AEE8591A76785D007CF17D /* StarQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarQuestionVC.h; path = "Questions View Controllers/StarQuestionVC.h"; sourceTree = "<group>"; };
 		59AEE85A1A76785D007CF17D /* StarQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StarQuestionVC.m; path = "Questions View Controllers/StarQuestionVC.m"; sourceTree = "<group>"; };
 		59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StarQuestionVC.xib; path = "Questions View Controllers/StarQuestionVC.xib"; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 			children = (
 				59691DD11A3084190095FA22 /* ABCQuestionVC.h */,
 				59691DD21A3084190095FA22 /* ABCQuestionVC.m */,
-				59691DD31A3084190095FA22 /* ABCQuestionVC.xib */,
 				59AEE8591A76785D007CF17D /* StarQuestionVC.h */,
 				59AEE85A1A76785D007CF17D /* StarQuestionVC.m */,
 				59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */,
@@ -309,7 +306,6 @@
 			files = (
 				595508D51A25E6BB00444D17 /* Main.storyboard in Resources */,
 				59AEE85D1A76785D007CF17D /* StarQuestionVC.xib in Resources */,
-				59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */,
 				595508DA1A25E6BB00444D17 /* LaunchScreen.xib in Resources */,
 				595508D71A25E6BB00444D17 /* Images.xcassets in Resources */,
 			);

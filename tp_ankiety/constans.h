@@ -9,7 +9,7 @@
 #ifndef tp_ankiety_constans_h
 #define tp_ankiety_constans_h
 
-#define kBaseURL @"http://127.0.0.1:8000/"
+#define kBaseURL @"http://test.pleaserespond.me/"
 #define kStarType @"stars"
 #define kABCType @"singlechoice"
 

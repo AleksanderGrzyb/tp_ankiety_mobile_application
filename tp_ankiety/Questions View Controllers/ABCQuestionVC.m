@@ -9,8 +9,8 @@
 #import "ABCQuestionVC.h"
 
 @interface ABCQuestionVC ()
-@property (weak, nonatomic) IBOutlet UILabel *bodyTextLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *answerSC;
+@property (weak, nonatomic) UILabel *questionLabel;
+@property (strong, nonatomic) NSString *questionText;
 @end
 
 @implementation ABCQuestionVC
@@ -21,17 +21,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.bodyTextLabel.text = self.question.bodyText;
-    [self.answerSC removeAllSegments];
-    for (NSString *answer in self.question.answers) {
-        [self.answerSC insertSegmentWithTitle:answer atIndex:[self.question.answers indexOfObject:answer] animated:NO];
-    }
-    if (![self.question.selectedAnswer isEqual:@(-1)]) {
-        [self.answerSC setSelectedSegmentIndex:[self.question.selectedAnswer intValue]];
-    }
-    else {
-        [self.answerSC setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    }
+    
+    UILabel *questionLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, self.view.frame.size.width - 50, 200)];
+    self.questionLabel = questionLabel;
+    self.questionLabel.text = self.questionText;
+    self.questionLabel.numberOfLines = 0;
+    [self.view addSubview:self.questionLabel];
+    
 }
 
 
@@ -40,28 +36,9 @@
 
 - (void)setQuestion:(Question *)question
 {
-    self.bodyTextLabel.text = question.bodyText;
-    [self.answerSC removeAllSegments];
-    for (NSString *answer in question.answers) {
-        [self.answerSC insertSegmentWithTitle:answer atIndex:[question.answers indexOfObject:answer] animated:NO];
-    }
+    self.questionText = question.bodyText;
+    self.questionLabel.text = self.questionText;
     _question = question;
-}
-
-#pragma mark - 
-#pragma mark Actions
-
-- (IBAction)segmentSelected:(UISegmentedControl *)sender
-{
-    self.question.selectedAnswer = @([sender selectedSegmentIndex]);
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *answersArray = [userDefaults arrayForKey:[NSString stringWithFormat:@"%d", [self.questionnaireID intValue]]];
-    if (answersArray) {
-        NSMutableArray *mutableAnswers = [answersArray mutableCopy];
-        mutableAnswers[self.questionNumber] = @([sender selectedSegmentIndex]);
-        [userDefaults setObject:[mutableAnswers copy] forKey:[NSString stringWithFormat:@"%d", [self.questionnaireID intValue]]];
-    }
-    [userDefaults synchronize];
 }
 
 @end
