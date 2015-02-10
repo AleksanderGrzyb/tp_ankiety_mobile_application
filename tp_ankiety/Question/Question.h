@@ -10,7 +10,7 @@
 
 @interface Question : NSObject
 
-@property (nonatomic, strong) NSNumber *type;
+@property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *idNumber;
 @property (nonatomic, strong) NSString *bodyText;
 @property (nonatomic, strong) NSArray *answers; // Array of answers (NSString)

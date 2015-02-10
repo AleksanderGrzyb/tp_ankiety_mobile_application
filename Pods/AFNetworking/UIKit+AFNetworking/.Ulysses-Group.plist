@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>createMarkedFile</key>
+	<false/>
+	<key>sheetClusters</key>
+	<array>
+		<array>
+			<string>AFNetworkActivityIndicatorManager.h</string>
+		</array>
+		<array>
+			<string>AFNetworkActivityIndicatorManager.m</string>
+		</array>
+		<array>
+			<string>UIActivityIndicatorView+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIActivityIndicatorView+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIAlertView+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIAlertView+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIButton+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIButton+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIImageView+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIImageView+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIKit+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIProgressView+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIProgressView+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIRefreshControl+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIRefreshControl+AFNetworking.m</string>
+		</array>
+		<array>
+			<string>UIWebView+AFNetworking.h</string>
+		</array>
+		<array>
+			<string>UIWebView+AFNetworking.m</string>
+		</array>
+	</array>
+</dict>
+</plist>

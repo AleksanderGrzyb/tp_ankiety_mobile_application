@@ -16,12 +16,14 @@
 		595508E61A25E6BB00444D17 /* tp_ankietyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508E51A25E6BB00444D17 /* tp_ankietyTests.m */; };
 		595508F11A25F52D00444D17 /* QuestionnairesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508F01A25F52D00444D17 /* QuestionnairesTVC.m */; };
 		595508F51A25F5DA00444D17 /* QuestionnairesTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508F41A25F5DA00444D17 /* QuestionnairesTVCell.m */; };
-		595508FC1A25F8E100444D17 /* AccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FB1A25F8E100444D17 /* AccountVC.m */; };
 		595509001A25FFE500444D17 /* Questionnaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508FF1A25FFE500444D17 /* Questionnaire.m */; };
 		59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */; };
 		59691DCF1A307B210095FA22 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCE1A307B210095FA22 /* Question.m */; };
 		59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DD21A3084190095FA22 /* ABCQuestionVC.m */; };
 		59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59691DD31A3084190095FA22 /* ABCQuestionVC.xib */; };
+		59AEE85C1A76785D007CF17D /* StarQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85A1A76785D007CF17D /* StarQuestionVC.m */; };
+		59AEE85D1A76785D007CF17D /* StarQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */; };
+		59AEE8601A7694BB007CF17D /* constans.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85F1A7694BB007CF17D /* constans.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +54,6 @@
 		595508F01A25F52D00444D17 /* QuestionnairesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionnairesTVC.m; path = Ankiety/QuestionnairesTVC.m; sourceTree = "<group>"; };
 		595508F31A25F5DA00444D17 /* QuestionnairesTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionnairesTVCell.h; path = Ankiety/QuestionnairesTVCell.h; sourceTree = "<group>"; };
 		595508F41A25F5DA00444D17 /* QuestionnairesTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionnairesTVCell.m; path = Ankiety/QuestionnairesTVCell.m; sourceTree = "<group>"; };
-		595508FA1A25F8E100444D17 /* AccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountVC.h; path = Konto/AccountVC.h; sourceTree = "<group>"; };
-		595508FB1A25F8E100444D17 /* AccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountVC.m; path = Konto/AccountVC.m; sourceTree = "<group>"; };
 		595508FE1A25FFE500444D17 /* Questionnaire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Questionnaire.h; path = Model/Questionnaire.h; sourceTree = "<group>"; };
 		595508FF1A25FFE500444D17 /* Questionnaire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Questionnaire.m; path = Model/Questionnaire.m; sourceTree = "<group>"; };
 		59691DC91A30765C0095FA22 /* QuestionnaireVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionnaireVC.h; path = Questionnaire/QuestionnaireVC.h; sourceTree = "<group>"; };
@@ -63,6 +63,11 @@
 		59691DD11A3084190095FA22 /* ABCQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABCQuestionVC.h; path = "Questions View Controllers/ABCQuestionVC.h"; sourceTree = "<group>"; };
 		59691DD21A3084190095FA22 /* ABCQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABCQuestionVC.m; path = "Questions View Controllers/ABCQuestionVC.m"; sourceTree = "<group>"; };
 		59691DD31A3084190095FA22 /* ABCQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ABCQuestionVC.xib; path = "Questions View Controllers/ABCQuestionVC.xib"; sourceTree = "<group>"; };
+		59AEE8591A76785D007CF17D /* StarQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarQuestionVC.h; path = "Questions View Controllers/StarQuestionVC.h"; sourceTree = "<group>"; };
+		59AEE85A1A76785D007CF17D /* StarQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StarQuestionVC.m; path = "Questions View Controllers/StarQuestionVC.m"; sourceTree = "<group>"; };
+		59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StarQuestionVC.xib; path = "Questions View Controllers/StarQuestionVC.xib"; sourceTree = "<group>"; };
+		59AEE85F1A7694BB007CF17D /* constans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constans.m; sourceTree = "<group>"; };
+		59B01B7E1A6D140700EA2DC4 /* constans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constans.h; sourceTree = "<group>"; };
 		A85971305A0EDDF94E5399FF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +134,6 @@
 				59691DC81A306BF30095FA22 /* Questionnaire View Controller */,
 				59691DCC1A307B030095FA22 /* Question Model */,
 				595508FD1A25FFCF00444D17 /* Questionnaire Model */,
-				595508F91A25F8B500444D17 /* Account View Controller */,
 				595508F21A25F53300444D17 /* Questionnaires View Controller */,
 				595508D31A25E6BB00444D17 /* Main.storyboard */,
 				595508D61A25E6BB00444D17 /* Images.xcassets */,
@@ -146,6 +150,8 @@
 				595508CB1A25E6BB00444D17 /* AppDelegate.m */,
 				595508C71A25E6BB00444D17 /* Info.plist */,
 				595508C81A25E6BB00444D17 /* main.m */,
+				59B01B7E1A6D140700EA2DC4 /* constans.h */,
+				59AEE85F1A7694BB007CF17D /* constans.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,15 +182,6 @@
 				595508F41A25F5DA00444D17 /* QuestionnairesTVCell.m */,
 			);
 			name = "Questionnaires View Controller";
-			sourceTree = "<group>";
-		};
-		595508F91A25F8B500444D17 /* Account View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				595508FB1A25F8E100444D17 /* AccountVC.m */,
-				595508FA1A25F8E100444D17 /* AccountVC.h */,
-			);
-			name = "Account View Controller";
 			sourceTree = "<group>";
 		};
 		595508FD1A25FFCF00444D17 /* Questionnaire Model */ = {
@@ -220,6 +217,9 @@
 				59691DD11A3084190095FA22 /* ABCQuestionVC.h */,
 				59691DD21A3084190095FA22 /* ABCQuestionVC.m */,
 				59691DD31A3084190095FA22 /* ABCQuestionVC.xib */,
+				59AEE8591A76785D007CF17D /* StarQuestionVC.h */,
+				59AEE85A1A76785D007CF17D /* StarQuestionVC.m */,
+				59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */,
 			);
 			name = "Questions View Controllers";
 			sourceTree = "<group>";
@@ -308,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				595508D51A25E6BB00444D17 /* Main.storyboard in Resources */,
+				59AEE85D1A76785D007CF17D /* StarQuestionVC.xib in Resources */,
 				59691DD51A3084190095FA22 /* ABCQuestionVC.xib in Resources */,
 				595508DA1A25E6BB00444D17 /* LaunchScreen.xib in Resources */,
 				595508D71A25E6BB00444D17 /* Images.xcassets in Resources */,
@@ -361,14 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				595508FC1A25F8E100444D17 /* AccountVC.m in Sources */,
 				59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */,
+				59AEE85C1A76785D007CF17D /* StarQuestionVC.m in Sources */,
 				595508F11A25F52D00444D17 /* QuestionnairesTVC.m in Sources */,
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
 				595509001A25FFE500444D17 /* Questionnaire.m in Sources */,
 				59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */,
 				59691DCF1A307B210095FA22 /* Question.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
+				59AEE8601A7694BB007CF17D /* constans.m in Sources */,
 				595508F51A25F5DA00444D17 /* QuestionnairesTVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

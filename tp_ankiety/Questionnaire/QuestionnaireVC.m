@@ -8,7 +8,9 @@
 
 #import "QuestionnaireVC.h"
 #import "ABCQuestionVC.h"
+#import "StarQuestionVC.h"
 #import "Question.h"
+#import "constans.h"
 #import <AFNetworking.h>
 
 @interface QuestionnaireVC () <ViewPagerDataSource, ViewPagerDelegate>
@@ -36,11 +38,12 @@
 
 - (void)sendQuestionnaire
 {
-    NSURL *baseURL = [NSURL URLWithString:@"http://10.42.0.1:8000"];
+    NSURL *baseURL = [NSURL URLWithString:kBaseURL];
     NSDictionary *completedQuestionnaire = [self createJSON];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager POST:@"/polls/QWERTY/submitpoll/" parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString *postString = [NSString stringWithFormat:@"/polls/%@/submitpoll/", [Constans userID]];
+    [manager POST:postString parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Networking Error"
@@ -56,17 +59,22 @@
 
 - (NSDictionary *)createJSON
 {
+    NSMutableDictionary *answeredQuestionnairesDictionary = [NSMutableDictionary dictionary];
+    NSMutableArray *answeredQuestionnaires = [NSMutableArray array];
     NSMutableDictionary *answeredQuestionnaire = [NSMutableDictionary dictionary];
     NSMutableArray *answeredQuestions = [NSMutableArray array];
     for (Question *question in self.questionnaire.questions) {
         NSMutableDictionary *answeredQuestion = [NSMutableDictionary dictionary];
         [answeredQuestion setValue:question.idNumber forKey:@"id"];
         [answeredQuestion setValue:question.selectedAnswer forKey:@"answer"];
+        [answeredQuestion setValue:question.type forKey:@"type"];
         [answeredQuestions addObject:answeredQuestion];
     }
     [answeredQuestionnaire setValue:[answeredQuestions copy] forKey:@"questions"];
     [answeredQuestionnaire setValue:self.questionnaire.idNumber forKey:@"id"];
-    return [answeredQuestionnaire copy];
+    [answeredQuestionnaires addObject:answeredQuestionnaire];
+    [answeredQuestionnairesDictionary setValue:answeredQuestionnaires forKey:@"questionnaires"];
+    return [answeredQuestionnairesDictionary copy];
 }
 
 #pragma mark -
@@ -88,12 +96,21 @@
 
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index
 {
-    ABCQuestionVC *questionVC = [[ABCQuestionVC alloc] init];
     Question *question = [self.questionnaire.questions objectAtIndex:index];
-    questionVC.question = question;
-    questionVC.questionnaireID = self.questionnaire.idNumber;
-    questionVC.questionNumber = index;
-    return questionVC;
+    if ([question.type isEqualToString:kStarType]) {
+        StarQuestionVC *questionVC = [[StarQuestionVC alloc] init];
+        questionVC.question = question;
+        questionVC.questionnaireID = self.questionnaire.idNumber;
+        questionVC.questionNumber = index;
+        return questionVC;
+    }
+    else {
+        ABCQuestionVC *questionVC = [[ABCQuestionVC alloc] init];
+        questionVC.question = question;
+        questionVC.questionnaireID = self.questionnaire.idNumber;
+        questionVC.questionNumber = index;
+        return questionVC;
+    }
 }
 
 #pragma mark -

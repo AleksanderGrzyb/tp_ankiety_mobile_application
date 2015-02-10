@@ -11,6 +11,7 @@
 #import "QuestionnairesTVCell.h"
 #import "Questionnaire.h"
 #import "Question.h"
+#import "constans.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate, QuestionnaireVCDelegate>
@@ -84,11 +85,12 @@
 
 - (void)testConnection
 {
-    NSURL *baseURL = [NSURL URLWithString:@"http://10.42.0.1:8000"];
+    NSURL *baseURL = [NSURL URLWithString:kBaseURL];
     NSDictionary *parameters = @{@"format" : @"json"};
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager GET:@"/polls/QWERTY/getpoll/" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString *getString = [NSString stringWithFormat:@"/polls/%@/getpoll/", [Constans userID]];
+    [manager GET:getString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *questionnaires = [responseObject valueForKey:@"questionnaires"];
         [self parseDataFromJSON:questionnaires];
         [self.refreshControl endRefreshing];
@@ -128,6 +130,7 @@
             question.answers = [questionDictionary valueForKey:@"answers"];
             question.bodyText = [questionDictionary valueForKey:@"question_text"];
             question.idNumber = [questionDictionary valueForKey:@"id"];
+            question.type = [questionDictionary valueForKey:@"type"];
             [questionObjects addObject:question];
         }
         questionnaire.questions = [questionObjects copy];

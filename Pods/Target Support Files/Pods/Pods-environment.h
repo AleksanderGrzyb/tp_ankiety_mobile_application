@@ -54,3 +54,15 @@
 #define COCOAPODS_VERSION_MINOR_ICViewPager 5
 #define COCOAPODS_VERSION_PATCH_ICViewPager 1
 
+// SAMStarListView
+#define COCOAPODS_POD_AVAILABLE_SAMStarListView
+#define COCOAPODS_VERSION_MAJOR_SAMStarListView 0
+#define COCOAPODS_VERSION_MINOR_SAMStarListView 0
+#define COCOAPODS_VERSION_PATCH_SAMStarListView 1
+
+// StarRatingView
+#define COCOAPODS_POD_AVAILABLE_StarRatingView
+#define COCOAPODS_VERSION_MAJOR_StarRatingView 1
+#define COCOAPODS_VERSION_MINOR_StarRatingView 0
+#define COCOAPODS_VERSION_PATCH_StarRatingView 0
+

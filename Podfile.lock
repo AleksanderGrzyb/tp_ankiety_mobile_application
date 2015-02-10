@@ -21,13 +21,19 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ICViewPager (1.5.1)
+  - SAMStarListView (0.0.1)
+  - StarRatingView (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - ICViewPager
+  - SAMStarListView
+  - StarRatingView
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   ICViewPager: 213e2d0b69d6ca57e7e5791dedd57cda5321432a
+  SAMStarListView: 268048bd0764c166ff41774d25ec104d5b940c80
+  StarRatingView: c3e81fe39e1fdd5a11d3bee4ccbf7fadf8491107
 
 COCOAPODS: 0.35.0

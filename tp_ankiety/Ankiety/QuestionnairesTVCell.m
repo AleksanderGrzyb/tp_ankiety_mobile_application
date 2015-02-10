@@ -38,7 +38,12 @@
 
 - (void)setTimeToComplete:(NSNumber *)timeToComplete
 {
-    self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %d min", [timeToComplete intValue]];
+    if (!timeToComplete) {
+        self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %d min", 0];
+    }
+    else {
+        self.timeToCompleteLabel.text = [NSString stringWithFormat:@"Szacowany czas ukończenia: %d min", [timeToComplete intValue]];
+    }
     _timeToComplete = timeToComplete;
 }
 
