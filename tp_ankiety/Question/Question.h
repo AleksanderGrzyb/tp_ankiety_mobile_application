@@ -13,7 +13,6 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *idNumber;
 @property (nonatomic, strong) NSString *bodyText;
-@property (nonatomic, strong) NSArray *answers; // Array of answers (NSString)
-@property (nonatomic, strong) NSNumber *selectedAnswer; // Index of selected answer, -1 if none selected
+@property (nonatomic, strong) NSArray *answers; // Array of Answer class
 
 @end

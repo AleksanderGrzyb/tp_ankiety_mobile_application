@@ -12,10 +12,12 @@
 #import "Questionnaire.h"
 #import "Question.h"
 #import "constans.h"
+#import "Answer.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 
 @interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate, QuestionnaireVCDelegate>
 @property (nonatomic, strong) NSMutableArray *questionnaires;
+@property (nonatomic) BOOL isRegistered;
 @end
 
 @implementation QuestionnairesTVC
@@ -89,7 +91,15 @@
     NSDictionary *parameters = @{@"format" : @"json"};
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString *getString = [NSString stringWithFormat:@"polls/mobile/%@/register/", [Constans userID]];
+    NSString *getString = @"";
+    if ([self isInitial]) {
+        getString = [NSString stringWithFormat:@"polls/mobile/%@/register/", [Constans userID]];
+        self.isRegistered = NO;
+    }
+    else {
+        getString = [NSString stringWithFormat:@"polls/mobile/%@/getpoll/", [Constans userID]];
+        self.isRegistered = YES;
+    }
     [manager GET:getString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *questionnaireData = (NSDictionary *)responseObject;
         [self parseDataFromJSON:questionnaireData];
@@ -117,16 +127,31 @@
 {
     [self.questionnaires removeAllObjects];
     Questionnaire *questionnaire = [[Questionnaire alloc] init];
-//    questionnaire.title = [questionnaireDictionary valueForKey:@"title"];
+    if (!self.isRegistered) {
+        questionnaire.isInitial = YES;
+    }
+    else {
+        questionnaire.isInitial = NO;
+    }
+    questionnaire.title = [questionnaireData valueForKey:@"title"];
     questionnaire.points = (NSNumber *)[questionnaireData valueForKey:@"points"];
     questionnaire.idNumber = [questionnaireData valueForKey:@"poll_id"];
     questionnaire.timeToComplete = (NSNumber *)[questionnaireData valueForKey:@"time_to_complete"];
-//    questionnaire.author = [questionnaireData valueForKey:@"author"];
+    questionnaire.author = [questionnaireData valueForKey:@"author"];
     NSArray *questions = [questionnaireData valueForKey:@"questions"];
     NSMutableArray *questionObjects = [NSMutableArray array];
     for (NSDictionary *questionDictionary in questions) {
         Question *question = [[Question alloc] init];
-        question.answers = [questionDictionary valueForKey:@"available_answers"];
+        
+        NSArray *answers = [questionDictionary valueForKey:@"available_answers"];
+        NSMutableArray *correctAnswers = [NSMutableArray array];
+        for (NSArray *answerData in answers) {
+            Answer *answer = [[Answer alloc] init];
+            answer.index = answerData[kAnswerIndex];
+            answer.text = answerData[kAnswerText];
+            [correctAnswers addObject:answer];
+        }
+        question.answers = [correctAnswers copy];
         question.idNumber = [questionDictionary valueForKey:@"id"];
         question.type = [questionDictionary valueForKey:@"question_type"];
         question.bodyText = [questionDictionary valueForKey:@"title"];
@@ -163,7 +188,6 @@
     questionnairesCell.timeToComplete = questionnaire.timeToComplete;
     questionnairesCell.title = questionnaire.title;
     questionnairesCell.points = questionnaire.points;
-    
     return questionnairesCell;
 }
 
@@ -172,6 +196,9 @@
 
 - (void)deleteQuestionnaireFromModel:(Questionnaire *)questionnaire
 {
+    if (questionnaire.isInitial) {
+        [self saveRegisteredState];
+    }
     [self.questionnaires removeObject:questionnaire];
     [self.tableView reloadData];
 }
@@ -186,23 +213,59 @@
         questionnaireVC.delegateSecond = self;
         Questionnaire *questionnaire = [self.questionnaires objectAtIndex:self.tableView.indexPathForSelectedRow.row];
         questionnaireVC.questionnaire = questionnaire;
+        
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSArray *answersArray = [userDefaults arrayForKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
-        if (!answersArray) {
-            NSMutableArray *newAnswers = [NSMutableArray array];
-            for (int i = 0; i < questionnaire.questions.count; i++) {
-                [newAnswers addObject:[NSNumber numberWithInt:-1]];
+        NSArray *questionsUD = [userDefaults arrayForKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
+        if (!questionsUD) {
+            NSMutableArray *newQuestions = [NSMutableArray array];
+            for (Question *question in questionnaire.questions) {
+                NSMutableDictionary *newQuestion = [NSMutableDictionary dictionary];
+                NSMutableArray *newAnswers = [NSMutableArray array];
+                for (Answer *answer in question.answers) {
+                    NSDictionary *answerData = @{kAnswerIndexKey : answer.index,
+                                                 kAnswerValueKey : answer.value};
+                    [newAnswers addObject:answerData];
+                }
+                [newQuestion setObject:[newAnswers copy] forKey:kQuestionAnswersKey];
+                [newQuestion setObject:question.idNumber forKey:kQuestionIDKey];
+                [newQuestions addObject:[newQuestion copy]];
             }
-            [userDefaults setObject:[newAnswers copy] forKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
+            
+            [userDefaults setObject:[newQuestions copy] forKey:[NSString stringWithFormat:@"%d", [questionnaire.idNumber intValue]]];
         }
         else {
-            for (int i = 0; i < answersArray.count; i++) {
-                Question *question = questionnaire.questions[i];
-                question.selectedAnswer = answersArray[i];
+            for (Question *question in questionnaire.questions) {
+                for (NSDictionary *questionUD in questionsUD) {
+                    if ([question.idNumber isEqualToNumber:[questionUD objectForKey:kQuestionIDKey]]) {
+                        NSArray *answersUD = [questionUD objectForKey:kQuestionAnswersKey];
+                        for (Answer *answer in question.answers) {
+                            for (NSDictionary *answerUD in answersUD) {
+                                if ([answer.index isEqualToNumber:[answerUD objectForKey:kAnswerIndexKey]]) {
+                                    answer.value = [answerUD objectForKey:kAnswerValueKey];
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         [userDefaults synchronize];
     }
+}
+
+- (BOOL)isInitial
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isInitial = [userDefaults boolForKey:kInitialKey];
+    return !isInitial;
+}
+
+- (void)saveRegisteredState
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:true forKey:kInitialKey];
+    self.isRegistered = YES;
+    [userDefaults synchronize];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31E97BCCBBE23A3138DBC7BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FF700F29E362F11F0677A9 /* libPods.a */; };
+		5900EB7B1A8A6620003C6E94 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5900EB7A1A8A6620003C6E94 /* Answer.m */; };
 		595508C91A25E6BB00444D17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508C81A25E6BB00444D17 /* main.m */; };
 		595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 595508CB1A25E6BB00444D17 /* AppDelegate.m */; };
 		595508D51A25E6BB00444D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595508D31A25E6BB00444D17 /* Main.storyboard */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		27FF700F29E362F11F0677A9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CEF5466AE41C733791B183 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5900EB791A8A6620003C6E94 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Answer.h; path = Model/Answer.h; sourceTree = "<group>"; };
+		5900EB7A1A8A6620003C6E94 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Answer.m; path = Model/Answer.m; sourceTree = "<group>"; };
 		595508C31A25E6BB00444D17 /* tp_ankiety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tp_ankiety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		595508C71A25E6BB00444D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		595508C81A25E6BB00444D17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,6 +108,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5900EB781A8A6606003C6E94 /* Answer Model */ = {
+			isa = PBXGroup;
+			children = (
+				5900EB791A8A6620003C6E94 /* Answer.h */,
+				5900EB7A1A8A6620003C6E94 /* Answer.m */,
+			);
+			name = "Answer Model";
+			sourceTree = "<group>";
+		};
 		595508BA1A25E6BB00444D17 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				59691DD01A30839E0095FA22 /* Questions View Controllers */,
+				5900EB781A8A6606003C6E94 /* Answer Model */,
 				59691DC81A306BF30095FA22 /* Questionnaire View Controller */,
 				59691DCC1A307B030095FA22 /* Question Model */,
 				595508FD1A25FFCF00444D17 /* Questionnaire Model */,
@@ -364,6 +377,7 @@
 				595508CC1A25E6BB00444D17 /* AppDelegate.m in Sources */,
 				595509001A25FFE500444D17 /* Questionnaire.m in Sources */,
 				59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */,
+				5900EB7B1A8A6620003C6E94 /* Answer.m in Sources */,
 				59691DCF1A307B210095FA22 /* Question.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
 				59AEE8601A7694BB007CF17D /* constans.m in Sources */,

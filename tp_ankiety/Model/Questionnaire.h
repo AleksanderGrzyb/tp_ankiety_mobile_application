@@ -10,11 +10,13 @@
 
 @interface Questionnaire : NSObject
 
+@property (nonatomic, assign) BOOL isInitial;
 @property (strong, nonatomic) NSString *title; // eg. Transport Publiczny
 @property (strong, nonatomic) NSNumber *timeToComplete; // eg. 10 (in minutes)
 @property (strong, nonatomic) NSString *author; // eg. MPK
 @property (strong, nonatomic) NSArray *questions; // NSArray of NSDictionaries
 @property (strong, nonatomic) NSNumber *points; // Point for filling questionnaire
 @property (strong, nonatomic) NSNumber *idNumber; // ID of questionnaire
+
 
 @end

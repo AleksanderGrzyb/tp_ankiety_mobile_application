@@ -11,6 +11,7 @@
 #import "StarQuestionVC.h"
 #import "Question.h"
 #import "constans.h"
+#import "Answer.h"
 #import <AFNetworking.h>
 
 @interface QuestionnaireVC () <ViewPagerDataSource, ViewPagerDelegate>
@@ -42,7 +43,7 @@
     NSDictionary *completedQuestionnaire = [self createJSON];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *postString = [NSString stringWithFormat:@"/polls/%@/submitpoll/", [Constans userID]];
+    NSString *postString = [NSString stringWithFormat:@"polls/%@/submitpoll/", [Constans userID]];
     [manager POST:postString parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -59,22 +60,35 @@
 
 - (NSDictionary *)createJSON
 {
-    NSMutableDictionary *answeredQuestionnairesDictionary = [NSMutableDictionary dictionary];
-    NSMutableArray *answeredQuestionnaires = [NSMutableArray array];
     NSMutableDictionary *answeredQuestionnaire = [NSMutableDictionary dictionary];
+    [answeredQuestionnaire setObject:self.questionnaire.idNumber forKey:@"poll_id"];
     NSMutableArray *answeredQuestions = [NSMutableArray array];
+    
     for (Question *question in self.questionnaire.questions) {
         NSMutableDictionary *answeredQuestion = [NSMutableDictionary dictionary];
-        [answeredQuestion setValue:question.idNumber forKey:@"id"];
-        [answeredQuestion setValue:question.selectedAnswer forKey:@"answer"];
-        [answeredQuestion setValue:question.type forKey:@"type"];
-        [answeredQuestions addObject:answeredQuestion];
+        [answeredQuestion setObject:question.idNumber forKey:@"id"];
+    
+        NSMutableArray *answeredAnswers = [NSMutableArray array];
+        
+        int valueSum = 0;
+        for (Answer *answer in question.answers) {
+            valueSum += [answer.value intValue];
+        }
+        
+        for (Answer *answer in question.answers) {
+            NSMutableArray *answeredAnswer = [NSMutableArray array];
+            answeredAnswer[kAnswerIndex] = answer.index;
+            double correctValue = (double)[answer.value intValue] / (double)valueSum;
+            answeredAnswer[kAnswerValue] = @(correctValue);
+            [answeredAnswers addObject:[answeredAnswer copy]];
+        }
+        [answeredQuestion setObject:[answeredAnswers copy] forKey:@"answers"];
+        
+        [answeredQuestions addObject:[answeredQuestion copy]];
     }
-    [answeredQuestionnaire setValue:[answeredQuestions copy] forKey:@"questions"];
-    [answeredQuestionnaire setValue:self.questionnaire.idNumber forKey:@"id"];
-    [answeredQuestionnaires addObject:answeredQuestionnaire];
-    [answeredQuestionnairesDictionary setValue:answeredQuestionnaires forKey:@"questionnaires"];
-    return [answeredQuestionnairesDictionary copy];
+    
+    [answeredQuestionnaire setObject:[answeredQuestions copy] forKey:@"questions"];
+    return [answeredQuestionnaire copy];
 }
 
 #pragma mark -
@@ -82,7 +96,7 @@
 
 - (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager
 {
-    return [self.questionnaire.questions count];
+    return self.questionnaire.questions.count;
 }
 
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index
@@ -120,7 +134,13 @@
 {
     int numberOfQuestionsAnswered = 0;
     for (Question *question in self.questionnaire.questions) {
-        if (![question.selectedAnswer isEqual: @(-1)]) {
+        BOOL answerCompleted = false;
+        for (Answer *answer in question.answers) {
+            if (![answer.value isEqualToNumber:@(0)]) {
+                answerCompleted = true;
+            }
+        }
+        if (answerCompleted) {
             numberOfQuestionsAnswered++;
         }
     }
