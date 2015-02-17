@@ -18,6 +18,7 @@
 @interface QuestionnairesTVC () <UITableViewDataSource, UITableViewDelegate, QuestionnaireVCDelegate>
 @property (nonatomic, strong) NSMutableArray *questionnaires;
 @property (nonatomic) BOOL isRegistered;
+@property (nonatomic) NSNumber *numberOfPoints;
 @end
 
 @implementation QuestionnairesTVC
@@ -30,6 +31,13 @@
     [super viewDidLoad];
     [self createRefreshControl];
     [self testConnection];
+    if ([self.numberOfPoints doubleValue] >= 0) {
+        self.title = [NSString stringWithFormat:@"Aktualna liczba punktów - %.1f", [self.numberOfPoints doubleValue]];
+    }
+    else {
+        self.title = [NSString stringWithFormat:@"Aktualna liczba punktów - 0"];
+        
+    }
 //    [self addFakeData];
 }
 
@@ -42,6 +50,21 @@
         _questionnaires = [[NSMutableArray alloc] init];
     }
     return _questionnaires;
+}
+
+#pragma mark -
+#pragma mark Setters
+
+- (void)setNumberOfPoints:(NSNumber *)numberOfPoints
+{
+    if ([numberOfPoints doubleValue] >= 0.0) {
+        self.title = [NSString stringWithFormat:@"Aktualna liczba punktów - %.1f", [numberOfPoints doubleValue]];
+    }
+    else {
+        self.title = [NSString stringWithFormat:@"Aktualna liczba punktów - 0"];
+        
+    }
+    _numberOfPoints = numberOfPoints;
 }
 
 #pragma mark -
@@ -128,6 +151,7 @@
     [self.questionnaires removeAllObjects];
     if (self.isRegistered) {
         NSArray *questionnaires = [questionnairesData objectForKey:@"polls"];
+        self.numberOfPoints = (NSNumber *)[questionnairesData objectForKey:@"points"];
         for (NSDictionary *questionnarieData in questionnaires) {
             Questionnaire *questionnaire = [[Questionnaire alloc] init];
             if (!self.isRegistered) {
