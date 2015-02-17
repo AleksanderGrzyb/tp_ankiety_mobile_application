@@ -14,7 +14,7 @@
 {
     NSString *userID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    return [userID stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    return @"1";
+    return @"3";
 }
 
 @end

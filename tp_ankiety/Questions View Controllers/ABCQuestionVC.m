@@ -57,6 +57,8 @@
             offset++;
         }
     }
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)loadView

@@ -21,6 +21,7 @@
 		59691DCB1A30765C0095FA22 /* QuestionnaireVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCA1A30765C0095FA22 /* QuestionnaireVC.m */; };
 		59691DCF1A307B210095FA22 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DCE1A307B210095FA22 /* Question.m */; };
 		59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59691DD21A3084190095FA22 /* ABCQuestionVC.m */; };
+		5991D3C91A8B61A8004462EF /* RankQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5991D3C81A8B61A8004462EF /* RankQuestionVC.m */; };
 		59AEE85C1A76785D007CF17D /* StarQuestionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85A1A76785D007CF17D /* StarQuestionVC.m */; };
 		59AEE85D1A76785D007CF17D /* StarQuestionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */; };
 		59AEE8601A7694BB007CF17D /* constans.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AEE85F1A7694BB007CF17D /* constans.m */; };
@@ -64,6 +65,8 @@
 		59691DCE1A307B210095FA22 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Question.m; path = Question/Question.m; sourceTree = "<group>"; };
 		59691DD11A3084190095FA22 /* ABCQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABCQuestionVC.h; path = "Questions View Controllers/ABCQuestionVC.h"; sourceTree = "<group>"; };
 		59691DD21A3084190095FA22 /* ABCQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABCQuestionVC.m; path = "Questions View Controllers/ABCQuestionVC.m"; sourceTree = "<group>"; };
+		5991D3C71A8B61A8004462EF /* RankQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankQuestionVC.h; path = "Questions View Controllers/RankQuestionVC.h"; sourceTree = "<group>"; };
+		5991D3C81A8B61A8004462EF /* RankQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankQuestionVC.m; path = "Questions View Controllers/RankQuestionVC.m"; sourceTree = "<group>"; };
 		59AEE8591A76785D007CF17D /* StarQuestionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarQuestionVC.h; path = "Questions View Controllers/StarQuestionVC.h"; sourceTree = "<group>"; };
 		59AEE85A1A76785D007CF17D /* StarQuestionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StarQuestionVC.m; path = "Questions View Controllers/StarQuestionVC.m"; sourceTree = "<group>"; };
 		59AEE85B1A76785D007CF17D /* StarQuestionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StarQuestionVC.xib; path = "Questions View Controllers/StarQuestionVC.xib"; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 		59691DD01A30839E0095FA22 /* Questions View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5991D3C71A8B61A8004462EF /* RankQuestionVC.h */,
+				5991D3C81A8B61A8004462EF /* RankQuestionVC.m */,
 				59691DD11A3084190095FA22 /* ABCQuestionVC.h */,
 				59691DD21A3084190095FA22 /* ABCQuestionVC.m */,
 				59AEE8591A76785D007CF17D /* StarQuestionVC.h */,
@@ -379,6 +384,7 @@
 				59691DD41A3084190095FA22 /* ABCQuestionVC.m in Sources */,
 				5900EB7B1A8A6620003C6E94 /* Answer.m in Sources */,
 				59691DCF1A307B210095FA22 /* Question.m in Sources */,
+				5991D3C91A8B61A8004462EF /* RankQuestionVC.m in Sources */,
 				595508C91A25E6BB00444D17 /* main.m in Sources */,
 				59AEE8601A7694BB007CF17D /* constans.m in Sources */,
 				595508F51A25F5DA00444D17 /* QuestionnairesTVCell.m in Sources */,

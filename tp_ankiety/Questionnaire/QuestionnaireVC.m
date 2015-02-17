@@ -9,6 +9,7 @@
 #import "QuestionnaireVC.h"
 #import "ABCQuestionVC.h"
 #import "StarQuestionVC.h"
+#import "RankQuestionVC.h"
 #import "Question.h"
 #import "constans.h"
 #import "Answer.h"
@@ -43,7 +44,13 @@
     NSDictionary *completedQuestionnaire = [self createJSON];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *postString = [NSString stringWithFormat:@"polls/%@/submitpoll/", [Constans userID]];
+    NSString *postString = @"";
+    if (!self.questionnaire.isInitial) {
+        postString = [NSString stringWithFormat:@"polls/mobile/%@/submitpoll/", [Constans userID]];
+    }
+    else {
+        postString = [NSString stringWithFormat:@"polls/mobile/%@/register/", [Constans userID]];
+    }
     [manager POST:postString parameters:completedQuestionnaire success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -70,15 +77,27 @@
     
         NSMutableArray *answeredAnswers = [NSMutableArray array];
         
+        
         int valueSum = 0;
         for (Answer *answer in question.answers) {
-            valueSum += [answer.value intValue];
+            if ([question.type isEqualToString:kRankType]) {
+                valueSum += pow(2.0, [answer.value intValue] - 1);
+            }
+            else {
+                valueSum += [answer.value intValue];
+            }
         }
         
         for (Answer *answer in question.answers) {
             NSMutableArray *answeredAnswer = [NSMutableArray array];
             answeredAnswer[kAnswerIndex] = answer.index;
-            double correctValue = (double)[answer.value intValue] / (double)valueSum;
+            double correctValue = 0.0;
+            if ([question.type isEqualToString:kRankType]) {
+                correctValue = (double)pow(2.0, [answer.value intValue] - 1) / (double)valueSum;
+            }
+            else {
+                correctValue = (double)[answer.value intValue] / (double)valueSum;
+            }
             answeredAnswer[kAnswerValue] = @(correctValue);
             [answeredAnswers addObject:[answeredAnswer copy]];
         }
@@ -118,11 +137,17 @@
         questionVC.questionNumber = index;
         return questionVC;
     }
+    else if ([question.type isEqualToString:kRankType]) {
+        RankQuestionVC *questionVC = [[RankQuestionVC alloc] init];
+        questionVC.question = question;
+        questionVC.questionnaireID = self.questionnaire.idNumber;
+        questionVC.questionNumber = index;
+        return questionVC;
+    }
     else {
         ABCQuestionVC *questionVC = [[ABCQuestionVC alloc] init];
         questionVC.question = question;
         questionVC.questionnaireID = self.questionnaire.idNumber;
-        questionVC.questionNumber = index;
         return questionVC;
     }
 }

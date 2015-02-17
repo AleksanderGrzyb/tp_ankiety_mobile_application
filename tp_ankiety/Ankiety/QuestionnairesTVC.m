@@ -123,42 +123,84 @@
     [self.refreshControl addTarget:self action:@selector(testConnection) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)parseDataFromJSON:(NSDictionary *)questionnaireData
+- (void)parseDataFromJSON:(NSDictionary *)questionnairesData
 {
     [self.questionnaires removeAllObjects];
-    Questionnaire *questionnaire = [[Questionnaire alloc] init];
-    if (!self.isRegistered) {
-        questionnaire.isInitial = YES;
+    if (self.isRegistered) {
+        NSArray *questionnaires = [questionnairesData objectForKey:@"polls"];
+        for (NSDictionary *questionnarieData in questionnaires) {
+            Questionnaire *questionnaire = [[Questionnaire alloc] init];
+            if (!self.isRegistered) {
+                questionnaire.isInitial = YES;
+            }
+            else {
+                questionnaire.isInitial = NO;
+            }
+            questionnaire.title = [questionnarieData valueForKey:@"title"];
+            questionnaire.points = (NSNumber *)[questionnarieData valueForKey:@"points"];
+            questionnaire.idNumber = [questionnarieData valueForKey:@"poll_id"];
+            questionnaire.timeToComplete = (NSNumber *)[questionnarieData valueForKey:@"time_to_complete"];
+            questionnaire.author = [questionnarieData valueForKey:@"author"];
+            NSArray *questions = [questionnarieData valueForKey:@"questions"];
+            NSMutableArray *questionObjects = [NSMutableArray array];
+            for (NSDictionary *questionDictionary in questions) {
+                Question *question = [[Question alloc] init];
+                
+                NSArray *answers = [questionDictionary valueForKey:@"available_answers"];
+                NSMutableArray *correctAnswers = [NSMutableArray array];
+                for (NSArray *answerData in answers) {
+                    Answer *answer = [[Answer alloc] init];
+                    answer.index = answerData[kAnswerIndex];
+                    answer.text = answerData[kAnswerText];
+                    [correctAnswers addObject:answer];
+                }
+                question.answers = [correctAnswers copy];
+                question.idNumber = [questionDictionary valueForKey:@"id"];
+                question.type = [questionDictionary valueForKey:@"question_type"];
+                question.bodyText = [questionDictionary valueForKey:@"title"];
+                [questionObjects addObject:question];
+            }
+            questionnaire.questions = [questionObjects copy];
+            [self.questionnaires addObject:questionnaire];
+        }
     }
     else {
-        questionnaire.isInitial = NO;
-    }
-    questionnaire.title = [questionnaireData valueForKey:@"title"];
-    questionnaire.points = (NSNumber *)[questionnaireData valueForKey:@"points"];
-    questionnaire.idNumber = [questionnaireData valueForKey:@"poll_id"];
-    questionnaire.timeToComplete = (NSNumber *)[questionnaireData valueForKey:@"time_to_complete"];
-    questionnaire.author = [questionnaireData valueForKey:@"author"];
-    NSArray *questions = [questionnaireData valueForKey:@"questions"];
-    NSMutableArray *questionObjects = [NSMutableArray array];
-    for (NSDictionary *questionDictionary in questions) {
-        Question *question = [[Question alloc] init];
-        
-        NSArray *answers = [questionDictionary valueForKey:@"available_answers"];
-        NSMutableArray *correctAnswers = [NSMutableArray array];
-        for (NSArray *answerData in answers) {
-            Answer *answer = [[Answer alloc] init];
-            answer.index = answerData[kAnswerIndex];
-            answer.text = answerData[kAnswerText];
-            [correctAnswers addObject:answer];
+        Questionnaire *questionnaire = [[Questionnaire alloc] init];
+        if (!self.isRegistered) {
+            questionnaire.isInitial = YES;
         }
-        question.answers = [correctAnswers copy];
-        question.idNumber = [questionDictionary valueForKey:@"id"];
-        question.type = [questionDictionary valueForKey:@"question_type"];
-        question.bodyText = [questionDictionary valueForKey:@"title"];
-        [questionObjects addObject:question];
+        else {
+            questionnaire.isInitial = NO;
+        }
+        questionnaire.title = [questionnairesData valueForKey:@"title"];
+        questionnaire.points = (NSNumber *)[questionnairesData valueForKey:@"points"];
+        questionnaire.idNumber = [questionnairesData valueForKey:@"poll_id"];
+        questionnaire.timeToComplete = (NSNumber *)[questionnairesData valueForKey:@"time_to_complete"];
+        questionnaire.author = [questionnairesData valueForKey:@"author"];
+        NSArray *questions = [questionnairesData valueForKey:@"questions"];
+        NSMutableArray *questionObjects = [NSMutableArray array];
+        for (NSDictionary *questionDictionary in questions) {
+            Question *question = [[Question alloc] init];
+            
+            NSArray *answers = [questionDictionary valueForKey:@"available_answers"];
+            NSMutableArray *correctAnswers = [NSMutableArray array];
+            for (NSArray *answerData in answers) {
+                Answer *answer = [[Answer alloc] init];
+                answer.index = answerData[kAnswerIndex];
+                answer.text = answerData[kAnswerText];
+                [correctAnswers addObject:answer];
+            }
+            question.answers = [correctAnswers copy];
+            question.idNumber = [questionDictionary valueForKey:@"id"];
+            question.type = [questionDictionary valueForKey:@"question_type"];
+            question.bodyText = [questionDictionary valueForKey:@"title"];
+            [questionObjects addObject:question];
+        }
+        questionnaire.questions = [questionObjects copy];
+        [self.questionnaires addObject:questionnaire];
     }
-    questionnaire.questions = [questionObjects copy];
-    [self.questionnaires addObject:questionnaire];
+    
+    
     [self.tableView reloadData];
 }
 
