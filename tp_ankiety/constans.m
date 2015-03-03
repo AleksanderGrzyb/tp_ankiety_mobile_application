@@ -15,7 +15,7 @@
     NSString *userID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    return [userID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     // Change user ID if you want to create new user
-    return @"4";
+    return @"14";
 }
 
 @end
